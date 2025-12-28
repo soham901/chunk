@@ -1,0 +1,8 @@
+repos:
+  - repo: local
+    hooks:
+      - id: minify-core
+        name: Minify core.js
+        entry: sh -c 'npx terser -c -m -o src/core.min.js -- src/core.js'
+        language: system
+        files: ^src/core\.js$
