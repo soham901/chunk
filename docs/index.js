@@ -1,4 +1,4 @@
-import { reactive, effect } from './core.js';
+import { reactive, effect } from '../src/core.js';
 
 // UI Elements
 const awarenessSlider = document.getElementById("awareness");
