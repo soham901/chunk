@@ -4,8 +4,8 @@
 Initial release with core foundation
 - [x] Deep reactive state with Proxy
 - [x] Auto-tracking effects
-- [ ] Basic test suite
-- [ ] Initial README & docs
+- [x] Basic test suite (50+ tests with edge cases & performance)
+- [x] Initial README & docs (working demo with impact calculator)
 
 ## 0.0.2
 Core stability & testing

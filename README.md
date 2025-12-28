@@ -31,6 +31,11 @@ A lightweight reactive core for learning and experimentation.
 
 Computed values with dependency tracking, array reactivity, Map/Set support, effect cleanup, batched updates, component system, DOM rendering
 
+## Resources
+
+- [Roadmap](./ROADMAP.md) - Feature roadmap and version planning
+- [Issues](./ISSUES.md) - Known issues and technical debt
+
 ## Status
 
 Developer is busy with coffee. Check back later for v0.0.1
