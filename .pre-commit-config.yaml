@@ -6,3 +6,10 @@ repos:
         entry: sh -c 'npx terser -c -m -o src/core.min.js -- src/core.js'
         language: system
         files: ^src/core\.js$
+      
+      - id: update-coverage
+        name: Run tests and update coverage
+        entry: bash scripts/update-coverage.sh
+        language: system
+        files: ^src/core\.(js|test\.js)$
+        pass_filenames: false
