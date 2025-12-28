@@ -6,16 +6,19 @@ A lightweight reactive core for learning and experimentation.
 
 - Deep reactive state with Proxy
 - Auto-tracking effects
-- TypeScript support
+- ~~TypeScript support~~
 
 ## Quick Start
 
-```typescript
-const state = reactive({ count: 0 });
+### Via CDN
 
-effect(() => console.log(`Count: ${state.count}`));
-
-state.count++; // Triggers effect
+```html
+<script src="https://cdn.jsdelivr.net/gh/soham901/chunk/src/core.js"></script>
+<script>
+  const state = reactive({ count: 0 });
+  effect(() => console.log(`Count: ${state.count}`));
+  state.count++; // Triggers effect
+</script>
 ```
 
 ## API
