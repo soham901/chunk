@@ -1,0 +1,65 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      docs-changed: ${{ steps.check-docs.outputs.changed }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check if docs folder changed
+        id: check-docs
+        run: |
+          if git diff --quiet HEAD~1 HEAD -- docs/; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+        continue-on-error: true
+
+      - name: Build project
+        run: |
+          echo "Building Chunk..."
+          # Add build steps here as needed
+
+      - name: Run tests
+        run: |
+          echo "Running tests..."
+          # Add test commands here when tests exist
+
+  deploy-pages:
+    needs: build
+    if: github.event_name == 'push' && needs.build.outputs.docs-changed == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'docs/'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
