@@ -1,4 +1,13 @@
-import { reactive, effect } from '../src/core.js';
+// Environment-aware module loading
+const isDev =
+  typeof window !== "undefined" &&
+  ["localhost", "127.0.0.1"].includes(window.location.hostname);
+
+const coreUrl = isDev
+  ? "../src/core.js"
+  : "https://cdn.jsdelivr.net/gh/soham901/chunk/src/core.js";
+
+const { reactive, effect } = await import(coreUrl);
 
 // UI Elements
 const awarenessSlider = document.getElementById("awareness");
