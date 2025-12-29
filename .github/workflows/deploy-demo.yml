@@ -3,29 +3,14 @@ name: Deploy Demo
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+    paths: ['demo/**']
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    outputs:
-      docs-changed: ${{ steps.check-docs.outputs.changed }}
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Check if demo folder changed
-        id: check-docs
-        run: |
-          if git diff --quiet HEAD~1 HEAD -- demo/; then
-            echo "changed=false" >> $GITHUB_OUTPUT
-          else
-            echo "changed=true" >> $GITHUB_OUTPUT
-          fi
-        continue-on-error: true
 
       - name: Build project
         run: |
@@ -39,7 +24,7 @@ jobs:
 
   deploy-pages:
     needs: build
-    if: github.event_name == 'push' && needs.build.outputs.docs-changed == 'true'
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     permissions:
       pages: write
