@@ -5,7 +5,7 @@ const isDev =
 
 const coreUrl = isDev
   ? "../src/core.js"
-  : "https://cdn.jsdelivr.net/gh/soham901/chunk/src/core.js";
+  : "https://cdn.jsdelivr.net/gh/soham901/chunk/src/core.min.js";
 
 const { reactive, effect } = await import(coreUrl);
 
