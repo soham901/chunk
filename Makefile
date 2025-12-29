@@ -7,7 +7,11 @@ coverage:
 	bash scripts/update-coverage.sh
 
 minify:
-	esbuild src/core.js --minify --outfile=src/core.min.js
+	npx terser -c -m -o src/core.min.js -- src/core.js
+	@echo "Script sizes:"
+	@du -h src/core.js | awk '{print "  core.js: " $$1}'
+	@du -h src/core.min.js | awk '{print "  core.min.js: " $$1}'
+	@bash scripts/update-bundle-size.sh
 
 build: minify
 	@echo "Build complete"

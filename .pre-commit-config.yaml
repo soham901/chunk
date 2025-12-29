@@ -3,13 +3,14 @@ repos:
     hooks:
       - id: minify-core
         name: Minify core.js
-        entry: sh -c 'npx terser -c -m -o src/core.min.js -- src/core.js'
+        entry: make minify
         language: system
         files: ^src/core\.js$
+        pass_filenames: false
       
       - id: update-coverage
         name: Run tests and update coverage
-        entry: bash scripts/update-coverage.sh
+        entry: make coverage
         language: system
         files: ^src/core\.(js|test\.js)$
         pass_filenames: false

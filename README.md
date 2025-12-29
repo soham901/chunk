@@ -21,6 +21,8 @@ A lightweight reactive core for learning and experimentation.
 </script>
 ```
 
+**Bundle Size**: <!-- BUNDLE_SIZE -->~4.0K<!-- /BUNDLE_SIZE --> (minified)
+
 ## API
 
 **`reactive(target)`** – Creates a deeply reactive proxy
