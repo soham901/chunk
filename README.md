@@ -13,8 +13,9 @@ A lightweight reactive core for learning and experimentation.
 ### Via CDN
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/soham901/chunk/src/core.min.js"></script>
-<script>
+<script type="module">
+  import { reactive, effect } from 'https://cdn.jsdelivr.net/gh/soham901/chunk/src/core.min.js';
+  
   const state = reactive({ count: 0 });
   effect(() => console.log(`Count: ${state.count}`));
   state.count++; // Triggers effect
